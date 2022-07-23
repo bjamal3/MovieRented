@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<form [formGroup]="movieForm" autocomplete="off" novalidate (ngSubmit)="addOrUpdateMovie(movieForm.value)">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col">
+        <div *ngIf="showError" class="alert alert-danger" role="alert">
+          <span [innerHTML]="errorMessage"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="title" class="col-form-label col-sm-2">Title:</label>
+        <input type="text" id="title" formControlName="title" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="yearPublished" class="col-form-label col-sm-2">Published:</label>
+        <input type="number" id="yearPublished" formControlName="yearPublished" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="directors" class="col-form-label col-sm-2">Directors:</label>
+        <input type="text" id="directors" formControlName="directors" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="stars" class="col-form-label col-sm-2">Stars:</label>
+        <input type="text" id="stars" formControlName="stars" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="votes" class="col-form-label col-sm-2">Votes:</label>
+        <input type="text" id="votes" formControlName="votes" class="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label for="gross" class="col-form-label col-sm-2">Gross:</label>
+        <input type="text" id="gross" formControlName="gross" class="form-control" />
+      </div>
+      <div class="col-md-12">
+        <label for="description" class="col-form-label col-sm-2">Description:</label>
+        <textarea type="text" id="description" rows="5" cols="50" formControlName="description" class="form-control">
+        </textarea>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" [disabled]="!movieForm.valid" class="btn btn-default">{{yesBtnName}}</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+  </div>
+</form>

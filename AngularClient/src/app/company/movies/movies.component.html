@@ -1,0 +1,45 @@
+<div class="row"> 
+    <div class="offset-10 col-md-2 mt-2">
+      <a type="button" (click)="openModalWithComponent()" class="btn btn-success btn-sm">Create Movie</a>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Year Published</th>
+              <th>Directors</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movie of movies">
+              <td>{{movie.title}}</td>
+              <td>{{movie.description}}</td>
+              <td>{{movie.yearPublished}}</td>
+              <td>{{movie.directors}}</td>
+              <td>
+                <button type="button" id="update" (click)="openEditModalWithComponent(movie)" class="btn btn-success">Update</button> 
+                  | 
+                <button type="button" id="delete" (click)="openModal(template,movie.id)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ng-template #template>
+      <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-danger btn-margin" (click)="confirm(id)" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      </div>
+    </ng-template>
+
+  </div>
